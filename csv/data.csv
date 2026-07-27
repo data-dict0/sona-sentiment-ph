@@ -1,0 +1,40 @@
+﻿president,year,total_words,roberta_weighted_score,net_satisfaction_before_SONA,net_satisfaction_after_SONA
+Corazon C. Aquino,1987,3402,0.239187357,69,36
+Corazon C. Aquino,1988,4052,0.346540132,64,57
+Corazon C. Aquino,1989,3586,0.422190619,37,32
+Corazon C. Aquino,1990,6164,0.751530849,37,7
+Corazon C. Aquino,1991,4001,-0.211446661,10,10
+Fidel V. Ramos,1992,4537,0.42835126,,66
+Fidel V. Ramos,1993,5422,0.53713626,69,62
+Fidel V. Ramos,1994,4921,0.57284827,67,55
+Fidel V. Ramos,1995,4412,0.593868932,26,1
+Fidel V. Ramos,1996,5023,0.941008707,19,21
+Fidel V. Ramos,1997,6129,0.92800113,49,35
+Joseph Ejercito Estrada,1998,3981,-0.582450752,,60
+Joseph Ejercito Estrada,1999,6220,0.11917881,65,28
+Joseph Ejercito Estrada,2000,6276,0.055889092,13,19
+Gloria Macapagal-Arroyo,2001,5504,0.571944161,16,15
+Gloria Macapagal-Arroyo,2002,4519,0.334281058,4,28
+Gloria Macapagal-Arroyo,2003,3306,0.260602999,14,2
+Gloria Macapagal-Arroyo,2004,2722,0.177778225,26,12
+Gloria Macapagal-Arroyo,2005,1590,0.567280764,-33,-23
+Gloria Macapagal-Arroyo,2006,4266,0.852880463,-13,-11
+Gloria Macapagal-Arroyo,2007,4792,0.779153968,-3,-11
+Gloria Macapagal-Arroyo,2008,4687,0.392403554,-50,-27
+Gloria Macapagal-Arroyo,2009,4533,0.420565799,-31,-38
+Benigno S. Aquino III,2010,3828,0.018451054,,60
+Benigno S. Aquino III,2011,6217,-0.052943827,46,56
+Benigno S. Aquino III,2012,9515,0.078005872,42,67
+Benigno S. Aquino III,2013,12890,0.365737663,64,49
+Benigno S. Aquino III,2014,10234,0.520508808,25,34
+Benigno S. Aquino III,2015,14943,0.48140459,30,41
+Rodrigo Roa Duterte,2016,9306,-0.046663613,,64
+Rodrigo Roa Duterte,2017,12712,-0.670568077,66,48
+Rodrigo Roa Duterte,2018,4832,0.318901888,45,54
+Rodrigo Roa Duterte,2019,9537,-0.422935837,68,65
+Rodrigo Roa Duterte,2020,8763,0.021662885,72,79
+Rodrigo Roa Duterte,2021,14769,-0.176880583,62,52
+Ferdinand R. Marcos Jr.,2022,7990,0.995397618,,63
+Ferdinand R. Marcos Jr.,2023,8227,0.999480611,58,44
+Ferdinand R. Marcos Jr.,2024,9177,0.896569781,27,32
+Ferdinand R. Marcos Jr.,2025,7389,0.686314125,10,-5

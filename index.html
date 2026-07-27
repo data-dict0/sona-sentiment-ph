@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1 user-scalable=no"
+    />
+    <script
+      src="https://kit.fontawesome.com/092b142fb0.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link href="styles.css" rel="stylesheet" />
+
+    <title>How public sentiment shapes the SONA</title>
+    <meta charset="utf-8" />
+    <meta property="og:title" content="How public sentiment shapes the SONA" />
+    <meta
+      property="og:description"
+      content="The annual presidential address typically skews positive in tone.
+                  Public satisfaction with the president appears to have some influence."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:image"
+      content="https://data-dict0.github.io/sona-sentiment-ph/assets/share-card.png"
+    />
+    <meta property="og:image:width" content="1000" />
+    <meta property="og:image:height" content="500" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@prinzmagtulis" />
+
+    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <main class="scrolly">
+        <div class="chart-panel">
+          <div class="chart-card">
+            <div id="chart"></div>
+          </div>
+        </div>
+
+        <div class="steps">
+          <section class="step is-active" data-step="0">
+            <div class="step-copy">
+              <p class="title">
+                How public sentiment shapes <br />
+                the SONA
+              </p>
+              <p class="dek">
+                <em
+                  >The annual presidential address typically skews positive in
+                  tone. Public satisfaction with the president appears to have
+                  some influence.
+                  <br />
+                  July 27, 2026
+                </em>
+              </p>
+            </div>
+          </section>
+
+          <section class="step" data-step="1">
+            <div class="step-copy">
+              <p>
+                Every year, the public is asked what they want to hear from the
+                president on their State of the Nation Address (SONA). But does
+                it even matter and does the speech get influenced by the
+                public's view?
+              </p>
+            </div>
+          </section>
+
+          <section class="step" data-step="2">
+            <div class="step-copy">
+              <p>
+                It appears so, to an extent. A Data Dictionary analysis of
+                <span class="sona">SONA speeches</span> revealed that public
+                satisfaction with the president tends to influence the sentiment
+                evoked by the SONA.
+              </p>
+            </div>
+          </section>
+
+          <section class="step" data-step="3">
+            <div class="step-copy">
+              <p>
+                In this chart, a reading above zero in the y-axis indicated a
+                generally positive sentiment of the SONA, which means the speech
+                is largely that of approval, optimism and encouragement. A
+                reading below zero is the opposite of that.
+              </p>
+            </div>
+          </section>
+
+          <section class="step" data-step="4">
+            <div class="step-copy">
+              <p>
+                Meanwhile, the x-axis plots the net satisfaction rating of the
+                president before the SONA was delivered, sometimes in June or
+                July. The data came from the Social Weather Stations, an
+                independent pollster.
+              </p>
+            </div>
+          </section>
+
+          <section class="step" data-step="5">
+            <div class="step-copy">
+              <p>
+                We found that a lower net satisfaction rating immediately before
+                the SONA tends to prompt a more positive tone in the president's
+                speech. The relationship seems to indicate how the SONA is not
+                only used by the president to set his policy agenda, but as a
+                political tool to win the public's trust and confidence.
+              </p>
+            </div>
+          </section>
+
+          <section class="step" data-step="6">
+            <div class="step-copy">
+              <p>
+                Whether or not this is an effective strategy however is still up
+                to question.
+              </p>
+            </div>
+          </section>
+
+          <section class="step" data-step="7">
+            <div class="step-copy">
+              <p>
+                The relationship between the sentiment evoked by the speech and
+                satisfaction ratings taken months after the speech was
+                delivered, still showed the same inverse relationship.
+              </p>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <div class="container-fluid">
+        <div class="row justify-content-md-center mt-3">
+          <div class="col-md-6">
+            For scholars, more than a policy speech, the SONA has long been a
+            political messaging tool, whether to strengthen or stabilize a
+            president's popularity or in twilight years of their administration,
+            salvage whatever remains of their political capital.
+          </div>
+        </div>
+
+        <div class="row justify-content-md-center mt-3">
+          <div class="col-md-6">
+            In a
+            <a href="https://www.prinzmagtulis.com/sona-story/" target="_blank"
+              >2023 analysis of the same speeches</a
+            >, we reported how specific words lay importance on the topics of
+            the SONA and the message a president intends to deliver. For
+            instance, Rodrigo Duterte had used his SONA to insist on the
+            legitimacy of his drug war and attacked critics of that policy. Some
+            like Gloria Arroyo used the SONA to address crises like the severe
+            acute respiratory syndrome (SARS) disease that spread in early
+            2000s.
+          </div>
+        </div>
+
+        <div class="row justify-content-md-center mt-3">
+          <div class="col-md-6">
+            The late Benigno Aquino III used the SONA to differentiate himself
+            from his predecessor, Arroyo, who suffered deteriorating
+            satisfaction ratings the longer she was in Malacanang.
+          </div>
+        </div>
+
+        <div class="row justify-content-md-center mt-3">
+          <div class="col-md-6">
+            However, beyond individual word relevance in the SONA was the
+            broader tone of the speech. Our current analysis confirmed results
+            of
+            <a
+              href="https://www.tandfonline.com/doi/full/10.1080/23311886.2021.1932030"
+              target="_blank"
+              >earlier studies</a
+            >
+            that showed an almost universal understanding that the SONA tends to
+            have a more positive than negative sentiment.
+          </div>
+        </div>
+
+        <div class="row justify-content-md-center mt-3">
+          <div class="col-md-6">
+            Unlike these earlier studies however, our analysis used a language
+            model that was pre-trained to understand the context behind the
+            Tagalog language, which English-based language models typically
+            miss. This is vital in this case especially since Aquino delivered
+            his SONA in Filipino, while Duterte often code-switched between
+            Filipino and English.
+          </div>
+        </div>
+
+        <div class="row justify-content-md-center mt-3">
+          <div class="col-md-6">
+            The drawback, however, is that the
+            <a
+              href="https://aclanthology.org/2023.icnlsp-1.34.pdf?fbclid=IwY2xjawTTat5leHRuA2FlbQIxMABicmlkETF2Znl3RVkzenM3TjBreG5ic3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHnb9t2E7ua8tPAjVeQXZki1gDlGGzfNK7IUwq7JZ8WlcBNQBzLS81V7APJrz_aem_nQlakKIK1vF0OZ9Qwul5Rg"
+              target="_blank"
+              >model</a
+            >
+            can only process a limited amount of text at a time, which then
+            required us to cut the SONA speeches by chunks for processing. "The
+            limit for the amount of text that can be processed is somewhat low.
+            But technically, the results are correct since it's very
+            straightforward," said Aunhel John Aduptante, one of the model's
+            creators at the Department of Science and Technology.
+          </div>
+        </div>
+
+        <div id="graphic">
+          <div class="row justify-content-md-center mt-3">
+            <div class="col-md-6">
+              <p class="h4">
+                Marcos Jr.'s speeches evoke some of the most positive sentiment
+                in SONA
+              </p>
+              <p>Sentiment rating</p>
+            </div>
+          </div>
+
+          <div class="row justify-content-md-center mt-1">
+            <div class="col-lg-12">
+              <!-- Generated by ai2html v0.117.6 - 2026-07-26 17:51 -->
+              <!-- ai file: sentiment.ai -->
+              <style media="screen,print">
+                #g-sentiment-box,
+                #g-sentiment-box .g-artboard {
+                  margin: 0 auto;
+                }
+                #g-sentiment-box p {
+                  margin: 0;
+                }
+                #g-sentiment-box .g-aiAbs {
+                  position: absolute;
+                }
+                #g-sentiment-box .g-aiImg {
+                  position: absolute;
+                  top: 0;
+                  display: block;
+                  width: 100% !important;
+                }
+                #g-sentiment-box .g-aiSymbol {
+                  position: absolute;
+                  box-sizing: border-box;
+                }
+                #g-sentiment-box .g-aiPointText p {
+                  white-space: nowrap;
+                }
+                #g-sentiment-Artboard_1 {
+                  position: relative;
+                  overflow: hidden;
+                }
+                #g-sentiment-Artboard_1 p {
+                  font-weight: 700;
+                  line-height: 19px;
+                  opacity: 1;
+                  letter-spacing: 0em;
+                  font-size: 16px;
+                  text-align: left;
+                  color: rgb(0, 0, 0);
+                  text-transform: none;
+                  padding-bottom: 0;
+                  padding-top: 0;
+                  mix-blend-mode: normal;
+                  font-style: normal;
+                  height: auto;
+                  position: static;
+                }
+                #g-sentiment-Artboard_1 .g-pstyle0 {
+                  font-weight: 300;
+                  text-align: center;
+                }
+                #g-sentiment-Artboard_1 .g-pstyle1 {
+                  font-weight: 300;
+                  height: 19px;
+                  color: rgb(112, 112, 112);
+                }
+                #g-sentiment-Artboard_1 .g-pstyle2 {
+                  text-align: right;
+                }
+                #g-sentiment-Artboard_1 .g-pstyle3 {
+                  font-weight: 300;
+                  height: 19px;
+                  color: rgb(33, 37, 41);
+                }
+                #g-sentiment-Artboard_1 .g-cstyle0 {
+                  font-weight: 700;
+                }
+                #g-sentiment-Artboard_2 {
+                  position: relative;
+                  overflow: hidden;
+                }
+                #g-sentiment-Artboard_2 p {
+                  font-weight: 700;
+                  line-height: 18px;
+                  opacity: 1;
+                  letter-spacing: 0em;
+                  font-size: 15px;
+                  text-align: left;
+                  color: rgb(0, 0, 0);
+                  text-transform: none;
+                  padding-bottom: 0;
+                  padding-top: 0;
+                  mix-blend-mode: normal;
+                  font-style: normal;
+                  height: auto;
+                  position: static;
+                }
+                #g-sentiment-Artboard_2 .g-pstyle0 {
+                  font-weight: 300;
+                  height: 18px;
+                  color: rgb(112, 112, 112);
+                }
+                #g-sentiment-Artboard_2 .g-pstyle1 {
+                  font-weight: 300;
+                  height: 18px;
+                  color: rgb(33, 37, 41);
+                }
+              </style>
+
+              <div id="g-sentiment-box" class="ai2html">
+                <!-- Artboard: Artboard_1 -->
+                <div
+                  id="g-sentiment-Artboard_1"
+                  class="g-artboard"
+                  style="width: 1000px; height: 391.56916547425px"
+                  data-aspect-ratio="2.554"
+                  data-min-width="500"
+                >
+                  <div style=""></div>
+                  <img
+                    id="g-sentiment-Artboard_1-img"
+                    class="g-sentiment-Artboard_1-img g-aiImg"
+                    alt=""
+                    src="sentiment-Artboard_1.png"
+                  />
+                  <div
+                    id="g-ai0-1"
+                    class="g-md g-aiAbs"
+                    style="
+                      top: 5.8738%;
+                      left: 31.7184%;
+                      margin-left: -5.9%;
+                      width: 11.8%;
+                    "
+                  >
+                    <p class="g-pstyle0">Asian financial crisis</p>
+                  </div>
+                  <div
+                    id="g-ai0-2"
+                    class="g-md g-aiAbs g-aiPointText"
+                    style="
+                      top: 13.1552%;
+                      margin-top: -10.5px;
+                      left: 0%;
+                      width: 53px;
+                    "
+                  >
+                    <p class="g-pstyle1">+1.0</p>
+                  </div>
+                  <div
+                    id="g-ai0-3"
+                    class="g-md g-aiAbs"
+                    style="top: 18.1322%; right: 18.033%; width: 21%"
+                  >
+                    <p class="g-pstyle2">
+                      ...while Marcos Jr.&rsquo;s had the most positive
+                      sentiment among presidents.
+                    </p>
+                  </div>
+                  <div
+                    id="g-ai0-4"
+                    class="g-md g-aiAbs g-aiPointText"
+                    style="
+                      top: 35.6289%;
+                      margin-top: -10.5px;
+                      left: 0%;
+                      width: 53px;
+                    "
+                  >
+                    <p class="g-pstyle1">+0.5</p>
+                  </div>
+                  <div
+                    id="g-ai0-5"
+                    class="g-md g-aiAbs g-aiPointText"
+                    style="
+                      top: 58.8687%;
+                      margin-top: -10.5px;
+                      left: 42.3583%;
+                      width: 154px;
+                    "
+                  >
+                    <p class="g-pstyle3">
+                      <span class="g-cstyle0">Positive</span> sentiment
+                    </p>
+                  </div>
+                  <div
+                    id="g-ai0-6"
+                    class="g-md g-aiAbs g-aiPointText"
+                    style="
+                      top: 64.7425%;
+                      margin-top: -10.5px;
+                      left: 42.3583%;
+                      width: 160px;
+                    "
+                  >
+                    <p class="g-pstyle3">
+                      <span class="g-cstyle0">Negative</span> sentiment
+                    </p>
+                  </div>
+                  <div
+                    id="g-ai0-7"
+                    class="g-md g-aiAbs"
+                    style="top: 68.4426%; left: 56.9647%; width: 15.8%"
+                  >
+                    <p>Duterte&rsquo;s speeches highly evoked</p>
+                    <p>negative sentiment...</p>
+                  </div>
+                  <div
+                    id="g-ai0-8"
+                    class="g-md g-aiAbs g-aiPointText"
+                    style="
+                      top: 82.1085%;
+                      margin-top: -10.5px;
+                      left: 0%;
+                      width: 53px;
+                    "
+                  >
+                    <p class="g-pstyle1">&minus;0.5</p>
+                  </div>
+                  <div
+                    id="g-ai0-9"
+                    class="g-md g-aiAbs g-aiPointText"
+                    style="
+                      top: 97.1761%;
+                      margin-top: -10.5px;
+                      left: 2.5953%;
+                      width: 57px;
+                    "
+                  >
+                    <p class="g-pstyle1">1986</p>
+                  </div>
+                  <div
+                    id="g-ai0-10"
+                    class="g-md g-aiAbs g-aiPointText"
+                    style="
+                      top: 97.1761%;
+                      margin-top: -10.5px;
+                      left: 15.0279%;
+                      width: 57px;
+                    "
+                  >
+                    <p class="g-pstyle1">1992</p>
+                  </div>
+                  <div
+                    id="g-ai0-11"
+                    class="g-md g-aiAbs g-aiPointText"
+                    style="
+                      top: 97.1761%;
+                      margin-top: -10.5px;
+                      left: 29.9842%;
+                      width: 57px;
+                    "
+                  >
+                    <p class="g-pstyle1">1998</p>
+                  </div>
+                  <div
+                    id="g-ai0-12"
+                    class="g-md g-aiAbs g-aiPointText"
+                    style="
+                      top: 97.1761%;
+                      margin-top: -10.5px;
+                      left: 37.521%;
+                      width: 57px;
+                    "
+                  >
+                    <p class="g-pstyle1">2001</p>
+                  </div>
+                  <div
+                    id="g-ai0-13"
+                    class="g-md g-aiAbs g-aiPointText"
+                    style="
+                      top: 97.1761%;
+                      margin-top: -10.5px;
+                      left: 59.8898%;
+                      width: 57px;
+                    "
+                  >
+                    <p class="g-pstyle1">2010</p>
+                  </div>
+                  <div
+                    id="g-ai0-14"
+                    class="g-md g-aiAbs g-aiPointText"
+                    style="
+                      top: 97.1761%;
+                      margin-top: -10.5px;
+                      left: 74.8393%;
+                      width: 57px;
+                    "
+                  >
+                    <p class="g-pstyle1">2016</p>
+                  </div>
+                  <div
+                    id="g-ai0-15"
+                    class="g-md g-aiAbs g-aiPointText"
+                    style="
+                      top: 97.1761%;
+                      margin-top: -10.5px;
+                      left: 89.7955%;
+                      width: 57px;
+                    "
+                  >
+                    <p class="g-pstyle1">2022</p>
+                  </div>
+                </div>
+
+                <!-- Artboard: Artboard_2 -->
+                <div
+                  id="g-sentiment-Artboard_2"
+                  class="g-artboard"
+                  style="max-width: 330px; max-height: 436px"
+                  data-aspect-ratio="0.758"
+                  data-min-width="0"
+                  data-max-width="499"
+                >
+                  <div style="padding: 0 0 131.9938% 0"></div>
+                  <img
+                    id="g-sentiment-Artboard_2-img"
+                    class="g-sentiment-Artboard_2-img g-aiImg"
+                    alt=""
+                    src="sentiment-Artboard_2.png"
+                  />
+                  <div
+                    id="g-ai1-1"
+                    class="g-xs g-aiAbs g-aiPointText"
+                    style="
+                      top: 1.8248%;
+                      margin-top: -9.9px;
+                      left: 0.303%;
+                      width: 51px;
+                    "
+                  >
+                    <p class="g-pstyle0">+1.0</p>
+                  </div>
+                  <div
+                    id="g-ai1-2"
+                    class="g-xs g-aiAbs g-aiPointText"
+                    style="
+                      top: 28.2264%;
+                      margin-top: -9.9px;
+                      left: 0.3033%;
+                      width: 51px;
+                    "
+                  >
+                    <p class="g-pstyle0">+0.5</p>
+                  </div>
+                  <div
+                    id="g-ai1-3"
+                    class="g-xs g-aiAbs g-aiPointText"
+                    style="
+                      top: 55.7758%;
+                      margin-top: -9.9px;
+                      left: 45.9694%;
+                      width: 74px;
+                    "
+                  >
+                    <p class="g-pstyle1">Positive</p>
+                  </div>
+                  <div
+                    id="g-ai1-4"
+                    class="g-xs g-aiAbs g-aiPointText"
+                    style="
+                      top: 60.1379%;
+                      margin-top: -9.9px;
+                      left: 45.9694%;
+                      width: 80px;
+                    "
+                  >
+                    <p class="g-pstyle1">Negative</p>
+                  </div>
+                  <div
+                    id="g-ai1-5"
+                    class="g-xs g-aiAbs"
+                    style="top: 66.3484%; left: 53.0692%; width: 26.6667%"
+                  >
+                    <p>Negative sentiment</p>
+                    <p>for Duterte speeches</p>
+                  </div>
+                  <div
+                    id="g-ai1-6"
+                    class="g-xs g-aiAbs g-aiPointText"
+                    style="
+                      top: 81.7183%;
+                      margin-top: -9.9px;
+                      left: 0.303%;
+                      width: 51px;
+                    "
+                  >
+                    <p class="g-pstyle0">&minus;0.5</p>
+                  </div>
+                  <div
+                    id="g-ai1-7"
+                    class="g-xs g-aiAbs g-aiPointText"
+                    style="
+                      top: 97.7888%;
+                      margin-top: -9.9px;
+                      left: 15.0201%;
+                      width: 55px;
+                    "
+                  >
+                    <p class="g-pstyle0">1990</p>
+                  </div>
+                  <div
+                    id="g-ai1-8"
+                    class="g-xs g-aiAbs g-aiPointText"
+                    style="
+                      top: 97.7888%;
+                      margin-top: -9.9px;
+                      left: 37.109%;
+                      width: 55px;
+                    "
+                  >
+                    <p class="g-pstyle0">2000</p>
+                  </div>
+                  <div
+                    id="g-ai1-9"
+                    class="g-xs g-aiAbs g-aiPointText"
+                    style="
+                      top: 97.7888%;
+                      margin-top: -9.9px;
+                      left: 59.2045%;
+                      width: 55px;
+                    "
+                  >
+                    <p class="g-pstyle0">2010</p>
+                  </div>
+                  <div
+                    id="g-ai1-10"
+                    class="g-xs g-aiAbs g-aiPointText"
+                    style="
+                      top: 97.7888%;
+                      margin-top: -9.9px;
+                      left: 81.2937%;
+                      width: 55px;
+                    "
+                  >
+                    <p class="g-pstyle0">2020</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- End ai2html - 2026-07-26 17:51 -->
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-md-center mt-3">
+          <div class="col-md-6">
+            While most SONA did evoke a more positive sentiment, our analysis
+            showed noticeable outliers. Foremost of which were Duterte's
+            speeches, which had highly negative sentiment. Interestingly, the
+            sentiment appeared to have made a complete U-turn when President
+            Ferdinand “Bongbong” Marcos Jr. took over: his speeches appeared to
+            have some of the most positive sentiment since 1986.
+          </div>
+        </div>
+
+        <div class="row justify-content-md-center mt-3">
+          <div class="col-md-6">
+            Marcos's penultimate SONA to be delivered today will determine if
+            the trend will continue.
+          </div>
+        </div>
+
+        <br />
+
+        <div class="row justify-content-md-center mt-3">
+          <div class="col-md-6">
+            <p class="h6">Sources</p>
+            <p>
+              gov.ph, Department of Science and Technology, Social Weather
+              Stations
+            </p>
+            <em
+              >Copyright 2026 - The
+              <a href="https://www.data-dict.com" target="_blank"
+                >Data Dictionary</a
+              >
+              Project
+            </em>
+          </div>
+        </div>
+      </div>
+      <br />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="./scroller.js"></script>
+    <script type="text/javascript">
+      (function () {
+        // only want one resizer on the page
+        if (
+          document.documentElement.className.indexOf('g-resizer-v3-init') > -1
+        )
+          return;
+        document.documentElement.className += ' g-resizer-v3-init';
+        // require IE9+
+        if (!('querySelector' in document)) return;
+        function resizer() {
+          var elements = Array.prototype.slice.call(
+              document.querySelectorAll('.g-artboard[data-min-width]')
+            ),
+            widthById = {};
+          elements.forEach(function (el) {
+            var parent = el.parentNode,
+              width =
+                widthById[parent.id] || parent.getBoundingClientRect().width,
+              minwidth = el.getAttribute('data-min-width'),
+              maxwidth = el.getAttribute('data-max-width');
+            widthById[parent.id] = width;
+
+            if (
+              +minwidth <= width &&
+              (+maxwidth >= width || maxwidth === null)
+            ) {
+              el.style.display = 'block';
+            } else {
+              el.style.display = 'none';
+            }
+          });
+          try {
+            if (window.parent && window.parent.$) {
+              window.parent.$('body').trigger('resizedcontent', [window]);
+            }
+            if (window.require) {
+              require(['foundation/main'], function () {
+                require([
+                  'shared/interactive/instances/app-communicator',
+                ], function (AppCommunicator) {
+                  AppCommunicator.triggerResize();
+                });
+              });
+            }
+          } catch (e) {
+            console.log(e);
+          }
+        }
+
+        document.addEventListener('DOMContentLoaded', resizer);
+        // feel free to replace throttle with _.throttle, if available
+        window.addEventListener('resize', throttle(resizer, 200));
+
+        function throttle(func, wait) {
+          // from underscore.js
+          var _now =
+              Date.now ||
+              function () {
+                return new Date().getTime();
+              },
+            context,
+            args,
+            result,
+            timeout = null,
+            previous = 0;
+          var later = function () {
+            previous = _now();
+            timeout = null;
+            result = func.apply(context, args);
+            if (!timeout) context = args = null;
+          };
+          return function () {
+            var now = _now(),
+              remaining = wait - (now - previous);
+            context = this;
+            args = arguments;
+            if (remaining <= 0 || remaining > wait) {
+              if (timeout) {
+                clearTimeout(timeout);
+                timeout = null;
+              }
+              previous = now;
+              result = func.apply(context, args);
+              if (!timeout) context = args = null;
+            } else if (!timeout && options.trailing !== false) {
+              timeout = setTimeout(later, remaining);
+            }
+            return result;
+          };
+        }
+      })();
+    </script>
+  </body>
+</html>
